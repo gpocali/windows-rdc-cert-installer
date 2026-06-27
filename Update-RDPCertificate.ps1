@@ -75,7 +75,7 @@ if (-Not (Test-Path $LocalCer) -or -Not (Test-Path $LocalKey)) {
 # ==========================================
 Write-Host "Merging PEM and private key into PFX format..." -ForegroundColor Cyan
 
-& certutil.exe -MergePfx -p "$RandomPassword" "$LocalCer" "$LocalPfx" | Out-Null
+& certutil.exe -f -MergePfx -p ",$RandomPassword" "$LocalCer" "$LocalPfx" | Out-Null
 
 if (-Not (Test-Path $LocalPfx)) {
     Write-Host "Error: certutil failed to merge the files into a PFX." -ForegroundColor Red
